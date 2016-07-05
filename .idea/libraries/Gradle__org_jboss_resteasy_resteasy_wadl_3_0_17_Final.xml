@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jboss.resteasy:resteasy-wadl:3.0.17.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.resteasy/resteasy-wadl/3.0.17.Final/1b96e7e8e41a33d6f0a549b75c7142e17246ca29/resteasy-wadl-3.0.17.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.resteasy/resteasy-wadl/3.0.17.Final/834bf9df049fdf3f422389bcc43e3cc340394c84/resteasy-wadl-3.0.17.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

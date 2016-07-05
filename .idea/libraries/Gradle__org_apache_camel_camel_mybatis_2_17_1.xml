@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.camel:camel-mybatis:2.17.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-mybatis/2.17.1/4a6d837785d9aa714ea8e3a76915d7446e4071b/camel-mybatis-2.17.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-mybatis/2.17.1/f0c36d1afa9c385e8ab2847a2694e41d18978d47/camel-mybatis-2.17.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
