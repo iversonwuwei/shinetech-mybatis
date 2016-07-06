@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/erp-server-api/erp-server-api.iml" filepath="$PROJECT_DIR$/.idea/modules/erp-server-api/erp-server-api.iml" group="erp-server-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/erp-server-api/erp-server-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/erp-server-api/erp-server-api_main.iml" group="erp-server-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/erp-server-api/erp-server-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/erp-server-api/erp-server-api_test.iml" group="erp-server-api" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shinetech-mybatis.iml" filepath="$PROJECT_DIR$/.idea/modules/shinetech-mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shinetech-mybatis_main.iml" filepath="$PROJECT_DIR$/.idea/modules/shinetech-mybatis_main.iml" group="shinetech-mybatis" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/shinetech-mybatis_test.iml" filepath="$PROJECT_DIR$/.idea/modules/shinetech-mybatis_test.iml" group="shinetech-mybatis" />
