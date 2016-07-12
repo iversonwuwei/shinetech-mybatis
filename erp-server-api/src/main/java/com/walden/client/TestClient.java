@@ -1,10 +1,8 @@
 package com.walden.client;
 
-import com.walden.action.implement.OrderQuery;
+import com.walden.action.implement.query.OrderQuery;
 import com.walden.configure.OrderRequestParams;
-import com.walden.factory.QueryServiceFactory;
 import com.walden.service.IService;
-import com.walden.service.QueryService;
 import net.sf.json.JSONArray;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class TestClient {
     private static Logger logger = LogManager.getLogger(TestClient.class);
 
-    private TestClient(){
+    public TestClient(){
 
     }
 

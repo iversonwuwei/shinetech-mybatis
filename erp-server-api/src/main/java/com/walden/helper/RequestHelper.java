@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by walden on 16/7/11.
  */
-public class RequestHelper {
+public abstract class RequestHelper {
 
 
     public static List<HttpMessageConverter<?>> setHeepMessageConverter(){
@@ -24,4 +24,8 @@ public class RequestHelper {
         messageConverters.add(jacksonConverter);
         return messageConverters;
     }
+
+    public abstract StringBuilder doPostParam(Object params);
+
+    public abstract StringBuilder doGetParam(Object params);
 }

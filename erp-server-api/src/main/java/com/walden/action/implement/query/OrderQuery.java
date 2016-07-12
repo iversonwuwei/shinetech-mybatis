@@ -1,7 +1,8 @@
-package com.walden.action.implement;
+package com.walden.action.implement.query;
 
 import com.walden.action.IQuery;
 import com.walden.action.IRequest;
+import com.walden.action.implement.MyBatisServerRequest;
 import com.walden.configure.OrderRequestParams;
 import com.walden.enumeration.ActionEnum;
 import net.sf.json.JSONArray;

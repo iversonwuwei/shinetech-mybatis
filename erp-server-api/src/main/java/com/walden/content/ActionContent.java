@@ -9,5 +9,7 @@ public class ActionContent {
 
     public static String ORDERS = "/query/orders";
 
-    public static String UTILS = "/query/utils";
+    public static String UTILS = "/query/util";
+
+    public static String ADDORDER = "/add/order/";
 }

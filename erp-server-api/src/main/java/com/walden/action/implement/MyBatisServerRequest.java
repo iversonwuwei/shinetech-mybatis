@@ -7,13 +7,11 @@ import com.walden.enumeration.ActionEnum;
 import com.walden.helper.RequestHelper;
 import com.walden.helper.WebParamHelper;
 import net.sf.json.JSONArray;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by walden on 16/7/8.
  */
-@Component
 public class MyBatisServerRequest implements IRequest {
 
     private IHost host;
@@ -30,7 +28,14 @@ public class MyBatisServerRequest implements IRequest {
     }
 
     @Override
-    public Object doPost(Object postParam) {
+    public Object doPost(ActionEnum actionEnum, Object postParam) {
+        switch (actionEnum){
+            case orderAdd:
+                requesturl.append(ActionContent.ADDORDER);
+                requesturl = new WebParamHelper(requesturl).doPostParam(postParam);
+                break;
+        }
+        restTemplate.setMessageConverters(RequestHelper.setHeepMessageConverter());
         return null;
     }
 
@@ -53,7 +58,7 @@ public class MyBatisServerRequest implements IRequest {
         switch (actionEnum) {
             case orderQuery:
                 requesturl.append(ActionContent.ORDER);
-                requesturl = new WebParamHelper(requesturl).getRequestUrlWithParams(requestParams);
+                requesturl = new WebParamHelper(requesturl).doGetParam(requestParams);
                 break;
         }
         restTemplate.setMessageConverters(RequestHelper.setHeepMessageConverter());

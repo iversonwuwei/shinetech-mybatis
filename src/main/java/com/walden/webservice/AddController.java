@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -24,9 +25,9 @@ public class AddController {
     private IConvert convert;
 
     @POST
-    @Path("/order")
+    @Path("/order/{order}")
     @Produces(MediaType.APPLICATION_JSON)
-    public void addOrder(String data){
-        addService.add(convert.convert(data));
+    public void addOrder(@QueryParam(value = "order") String order){
+        addService.add(convert.convert(order));
     }
 }

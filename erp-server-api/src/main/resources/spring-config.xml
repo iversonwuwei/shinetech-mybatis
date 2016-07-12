@@ -10,8 +10,5 @@
         <constructor-arg name="address" value="localhost"/>
         <constructor-arg name="port" value="8088"/>
     </bean>
-    <bean class="com.walden.service.implement.OrderQueryService">
-        <property name="query" ref="query"/>
-    </bean>
-    <bean id="query" class="com.walden.action.implement.OrderQuery"/>
+    <bean id="query" class="com.walden.action.implement.query.OrderQuery"/>
 </beans>

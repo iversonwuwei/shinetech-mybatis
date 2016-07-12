@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public interface IRequest {
 
-    Object doPost(Object postParam);
+    Object doPost(ActionEnum actionEnum, Object postParam);
 
     Object doGetWithParam(ActionEnum actionEnum, Object requestParams);
 

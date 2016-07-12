@@ -5,5 +5,5 @@ package com.walden.action;
  */
 public interface IAdd {
 
-    boolean insert(Object o);
+    Object insert(Object o);
 }
