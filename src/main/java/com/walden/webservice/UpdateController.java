@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -26,11 +24,11 @@ public class UpdateController {
 
     private boolean updated;
 
-    @POST
+    @GET
     @Path("/order")
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean updateOrder(String data){
-        updated = updateService.update(convert.convert(data));
+    public boolean updateOrder(@QueryParam(value = "orderid") String orderid){
+        updated = updateService.update(convert.convert(orderid));
         return updated;
     }
 }

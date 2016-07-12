@@ -13,6 +13,7 @@
           <file>file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.batch/spring-batch-core/3.0.7.RELEASE/b736f8c14550cdb1440e28bb6aa690a387a7aa57/spring-batch-core-3.0.7.RELEASE.jar</file>
           <file>file://$MODULE_DIR$/../../src/main/resources/spring-config/springContext.xml</file>
           <file>file://$MODULE_DIR$/../../src/main/resources/log4j/log4j.xml</file>
+          <file>file://$MODULE_DIR$/../../src/main/resources/spring-config/mongoContext.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -75,6 +76,8 @@
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-jpa:1.10.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-core:2.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-log4j12:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.mongodb:mongo-java-driver:3.2.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-mongodb:1.9.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-messaging:4.3.0.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.aspectj:aspectjweaver:1.8.9" level="project" />
     <orderEntry type="library" name="Gradle: aopalliance:aopalliance:1.0" level="project" />

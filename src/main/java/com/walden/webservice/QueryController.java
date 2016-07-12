@@ -40,8 +40,8 @@ public class QueryController {
     @Path("/order")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public JSONObject testString1(@QueryParam(value = "orderid")String orderid){
-        return (JSONObject) orderQueryService.queryBy(orderid);
+    public JSONObject testString1(@QueryParam(value = "id")String id){
+        return (JSONObject) orderQueryService.queryBy(id);
     }
 
     @GET

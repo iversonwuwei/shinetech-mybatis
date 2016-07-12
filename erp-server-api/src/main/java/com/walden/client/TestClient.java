@@ -1,32 +1,36 @@
 package com.walden.client;
 
-import net.sf.json.JSONObject;
+import com.walden.action.implement.OrderQuery;
+import com.walden.configure.OrderRequestParams;
+import com.walden.factory.QueryServiceFactory;
+import com.walden.service.IService;
+import com.walden.service.QueryService;
+import net.sf.json.JSONArray;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by walden on 16/7/6.
  */
 public class TestClient {
-
-    private JSONObject jsonArray;
     private static Logger logger = LogManager.getLogger(TestClient.class);
 
-    public TestClient(){
+    private TestClient(){
 
     }
 
-    public JSONObject printTest(String orderid){
-        try {
-            if (orderid != null || !orderid.equals("")) {
-                RestTemplate restTemplate = new RestTemplate();
-                String URL = "http://localhost:8088/query/order?orderid={orderid}";
-                jsonArray = restTemplate.getForObject(URL, JSONObject.class, orderid);
-            }
-        }catch (Exception e){
-            logger.error(e.getMessage()+e.getStackTrace());
-        }
-        return jsonArray;
+    public JSONArray jsonTest(){
+        OrderRequestParams orderRequestParams = new OrderRequestParams();
+        orderRequestParams.setOrderid("nn20160624150722");
+        IService orderQueryService = new com.walden.service.implement.QueryService(new OrderQuery());
+        JSONArray jsonObject = (JSONArray) orderQueryService.findBy(orderRequestParams);
+        return jsonObject;
+    }
+
+    public static void main(String[] args){
+        TestClient testClient = new TestClient();
+        JSONArray jsonObject = testClient.jsonTest();
+
+        System.out.println(jsonObject);
     }
 }
