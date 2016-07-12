@@ -14,8 +14,8 @@ import net.sf.json.JSONObject;
 public class OrderQuery implements IQuery {
     private IRequest request;
 
-    public OrderQuery(){
-        request = new MyBatisServerRequest();
+    public OrderQuery(IRequest request){
+        this.request = request;
     }
 
     @Override

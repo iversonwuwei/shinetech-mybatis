@@ -11,8 +11,8 @@ import com.walden.enumeration.ActionEnum;
 public class UtilQuery implements IQuery {
     private IRequest request;
 
-    public UtilQuery(){
-        request = new MyBatisServerRequest();
+    public UtilQuery(IRequest request){
+        this.request = request;
     }
 
     @Override

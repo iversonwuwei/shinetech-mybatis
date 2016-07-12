@@ -1,5 +1,7 @@
 package com.walden.client;
 
+import com.walden.action.IRequest;
+import com.walden.action.implement.MyBatisServerRequest;
 import com.walden.action.implement.query.OrderQuery;
 import com.walden.configure.OrderRequestParams;
 import com.walden.service.IService;
@@ -18,9 +20,10 @@ public class TestClient {
     }
 
     public JSONArray jsonTest(){
+        IRequest request = new MyBatisServerRequest();
         OrderRequestParams orderRequestParams = new OrderRequestParams();
         orderRequestParams.setOrderid("nn20160624150722");
-        IService orderQueryService = new com.walden.service.implement.QueryService(new OrderQuery());
+        IService orderQueryService = new com.walden.service.implement.QueryService(new OrderQuery(request));
         JSONArray jsonObject = (JSONArray) orderQueryService.findBy(orderRequestParams);
         return jsonObject;
     }

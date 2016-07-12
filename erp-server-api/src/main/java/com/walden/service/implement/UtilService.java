@@ -1,6 +1,8 @@
 package com.walden.service.implement;
 
 import com.walden.action.IQuery;
+import com.walden.action.IRequest;
+import com.walden.action.implement.MyBatisServerRequest;
 import com.walden.action.implement.query.UtilQuery;
 import com.walden.service.IService;
 
@@ -11,8 +13,8 @@ public class UtilService implements IService {
 
     private IQuery query;
 
-    public UtilService(){
-        query = new UtilQuery();
+    public UtilService(IQuery query) {
+        this.query = query;
     }
 
     @Override
