@@ -7,11 +7,13 @@ import com.walden.enumeration.ActionEnum;
 import com.walden.helper.RequestHelper;
 import com.walden.helper.WebParamHelper;
 import net.sf.json.JSONArray;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by walden on 16/7/8.
  */
+@Component
 public class MyBatisServerRequest implements IRequest {
 
     private IHost host;
@@ -23,12 +25,12 @@ public class MyBatisServerRequest implements IRequest {
         host = new MyBatisHost("localhost", 8088);
         myBatisHost = host.getServer();
         restTemplate = new RestTemplate();
-        requesturl = new StringBuilder();
-        requesturl.append(myBatisHost);
     }
 
     @Override
     public Object doPost(ActionEnum actionEnum, Object postParam) {
+        requesturl = new StringBuilder();
+        requesturl.append(myBatisHost);
         switch (actionEnum){
             case orderAdd:
                 requesturl.append(ActionContent.ADDORDER);
@@ -41,6 +43,8 @@ public class MyBatisServerRequest implements IRequest {
 
     @Override
     public JSONArray doGet(ActionEnum actionEnum) {
+        requesturl = new StringBuilder();
+        requesturl.append(myBatisHost);
         switch (actionEnum) {
             case orderQueryAll:
                 requesturl.append(ActionContent.ORDERS);
@@ -55,6 +59,8 @@ public class MyBatisServerRequest implements IRequest {
 
     @Override
     public Object doGetWithParam(ActionEnum actionEnum, Object requestParams) {
+        requesturl = new StringBuilder();
+        requesturl.append(myBatisHost);
         switch (actionEnum) {
             case orderQuery:
                 requesturl.append(ActionContent.ORDER);

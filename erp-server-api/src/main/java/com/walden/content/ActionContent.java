@@ -1,8 +1,11 @@
 package com.walden.content;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by walden on 16/7/11.
  */
+@Component
 public class ActionContent {
 
     public static String ORDER = "/query/order";

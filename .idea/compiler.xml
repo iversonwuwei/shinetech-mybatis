@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="erp-server-api_main" target="1.6" />
-      <module name="erp-server-api_test" target="1.6" />
+      <module name="erp-server-api_main" target="1.8" />
+      <module name="erp-server-api_test" target="1.8" />
       <module name="shinetech-mybatis_main" target="1.6" />
       <module name="shinetech-mybatis_test" target="1.6" />
     </bytecodeTargetLevel>

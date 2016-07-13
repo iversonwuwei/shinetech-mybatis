@@ -1,6 +1,8 @@
 package com.walden.helper;
 
 import com.walden.configure.OrderRequestParams;
+import org.springframework.stereotype.Component;
+
 import java.util.Set;
 
 /**
@@ -13,7 +15,6 @@ public class WebParamHelper extends RequestHelper {
     private Set<String> keys = null;
 
     public WebParamHelper(StringBuilder requesturl){
-
         this.requesturl = requesturl;
     }
 
@@ -40,5 +41,4 @@ public class WebParamHelper extends RequestHelper {
         }
         return requesturl;
     }
-
 }

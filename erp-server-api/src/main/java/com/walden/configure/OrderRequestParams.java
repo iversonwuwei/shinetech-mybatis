@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * Created by walden on 16/7/8.
  */
+@Component
 public class OrderRequestParams {
 
     private String orderid;
