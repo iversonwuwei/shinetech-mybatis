@@ -15,4 +15,8 @@ public class ActionContent {
     public static String UTILS = "/query/util";
 
     public static String ADDORDER = "/add/order/";
+
+    public static String USERS = "/query/users";
+
+    public static String USER = "/query/user";
 }

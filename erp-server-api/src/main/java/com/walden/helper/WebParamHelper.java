@@ -1,6 +1,7 @@
 package com.walden.helper;
 
 import com.walden.configure.OrderRequestParams;
+import com.walden.configure.UserRequestParams;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -12,6 +13,7 @@ public class WebParamHelper extends RequestHelper {
 
     private StringBuilder requesturl;
     private OrderRequestParams orderRequestParams;
+    private UserRequestParams userRequestParams;
     private Set<String> keys = null;
 
     public WebParamHelper(StringBuilder requesturl){
@@ -31,14 +33,26 @@ public class WebParamHelper extends RequestHelper {
             if (orderRequestParams != null && orderRequestParams.getParamsMap() != null
                     && orderRequestParams.getOrderid()!=null){
                 keys = orderRequestParams.getParamsMap().keySet();
-                for (String key : keys){
-                    requesturl.append("?");
-                    requesturl.append(key);
-                    requesturl.append("=");
-                    requesturl.append(orderRequestParams.getParamsMap().get(key));
-                }
+                getParamsString(keys);
+            }
+        }
+        if (params instanceof UserRequestParams){
+            userRequestParams = (UserRequestParams) params;
+            if (userRequestParams != null && userRequestParams.getParamsMap() != null
+                    && userRequestParams.getUserid()!=null){
+                keys = orderRequestParams.getParamsMap().keySet();
+                getParamsString(keys);
             }
         }
         return requesturl;
+    }
+
+    private void getParamsString(Set<String> keys){
+        for (String key : keys){
+            requesturl.append("?");
+            requesturl.append(key);
+            requesturl.append("=");
+            requesturl.append(orderRequestParams.getParamsMap().get(key));
+        }
     }
 }

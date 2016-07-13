@@ -1,10 +1,15 @@
 package com.walden.client;
 
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+import com.walden.action.IQuery;
 import com.walden.action.IRequest;
 import com.walden.action.implement.MyBatisServerRequest;
 import com.walden.action.implement.query.OrderQuery;
+import com.walden.action.implement.query.UserQuery;
 import com.walden.configure.OrderRequestParams;
+import com.walden.configure.UserRequestParams;
 import com.walden.service.IService;
+import com.walden.service.implement.QueryService;
 import net.sf.json.JSONArray;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,15 +21,14 @@ public class TestClient {
     private static Logger logger = LogManager.getLogger(TestClient.class);
 
     public TestClient(){
-
     }
 
     public JSONArray jsonTest(){
         IRequest request = new MyBatisServerRequest();
-        OrderRequestParams orderRequestParams = new OrderRequestParams();
-        orderRequestParams.setOrderid("nn20160624150722");
-        IService orderQueryService = new com.walden.service.implement.QueryService(new OrderQuery(request));
-        JSONArray jsonObject = (JSONArray) orderQueryService.findBy(orderRequestParams);
+        UserRequestParams orderRequestParams = new UserRequestParams();
+        orderRequestParams.setUserid("1");
+        IService orderQueryService = new com.walden.service.implement.QueryService();
+        JSONArray jsonObject = (JSONArray) orderQueryService.findBy(new UserQuery(request), orderRequestParams);
         return jsonObject;
     }
 

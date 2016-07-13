@@ -52,6 +52,9 @@ public class MyBatisServerRequest implements IRequest {
             case utils:
                 requesturl.append(ActionContent.UTILS);
                 break;
+            case userQuery:
+                requesturl.append(ActionContent.USERS);
+                break;
         }
         restTemplate.setMessageConverters(RequestHelper.setHeepMessageConverter());
         return JSONArray.fromObject(restTemplate.getForObject(requesturl.toString(), Object.class));
@@ -64,6 +67,10 @@ public class MyBatisServerRequest implements IRequest {
         switch (actionEnum) {
             case orderQuery:
                 requesturl.append(ActionContent.ORDER);
+                requesturl = new WebParamHelper(requesturl).doGetParam(requestParams);
+                break;
+            case userQuery:
+                requesturl.append(ActionContent.USER);
                 requesturl = new WebParamHelper(requesturl).doGetParam(requestParams);
                 break;
         }

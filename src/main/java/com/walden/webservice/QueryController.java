@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.*;
@@ -24,6 +25,9 @@ public class QueryController {
 
     @Autowired
     private IQueryService utilQueryService;
+
+    @Autowired
+    private IQueryService userQueryService;
 
 
     @GET
@@ -50,5 +54,21 @@ public class QueryController {
     @Consumes(MediaType.APPLICATION_JSON)
     public JSONArray util(){
         return (JSONArray) utilQueryService.query();
+    }
+
+    @GET
+    @Path("/users")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public JSONArray users(){
+        return (JSONArray) userQueryService.query();
+    }
+
+    @GET
+    @Path("/user")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public JSONObject user(@QueryParam(value = "id") String id){
+        return (JSONObject) userQueryService.queryBy(id);
     }
 }

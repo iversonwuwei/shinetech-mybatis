@@ -1,5 +1,6 @@
 package com.walden.dao.auto;
 
+import com.walden.entity.ComplexUserEntity;
 import com.walden.entity.UserEntity;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
@@ -14,9 +15,9 @@ import java.util.List;
 @Transactional
 public interface UserDao {
 
-    @Select("")
+    @Select("SELECT * FROM goTurf.user;")
     List<UserEntity> findUsers();
 
-    @Select("")
+    @Select("SELECT * FROM goTurf.user where user_id = #{userid}")
     UserEntity findUserBy(Object userid);
 }
