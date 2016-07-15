@@ -1,12 +1,14 @@
 package com.walden.webservice;
 
+import com.walden.common.implement.order.OwnerOrderQuery;
+import com.walden.service.implement.order.OrderQueryService;
+import com.walden.service.implement.order.OwnerOrderQueryService;
 import com.walden.service.iservice.IQueryService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import javax.ws.rs.*;
@@ -29,6 +31,9 @@ public class QueryController {
     @Autowired
     private IQueryService userQueryService;
 
+    @Autowired
+    private OwnerOrderQueryService ownerOrderQueryService;
+
 
     @GET
     @Path("/orders")
@@ -46,6 +51,14 @@ public class QueryController {
     @Consumes(MediaType.APPLICATION_JSON)
     public JSONObject testString1(@QueryParam(value = "id")String id){
         return (JSONObject) orderQueryService.queryBy(id);
+    }
+
+    @GET
+    @Path("/orderbyowner")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public JSONArray getOrdersByOwner(@QueryParam(value = "owner") String owner){
+        return JSONArray.fromObject(ownerOrderQueryService.findOrdersBy(owner));
     }
 
     @GET

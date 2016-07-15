@@ -2,7 +2,7 @@ package com.walden.action.implement.query;
 
 import com.walden.action.IQuery;
 import com.walden.action.IRequest;
-import com.walden.action.implement.MyBatisServerRequest;
+import com.walden.configure.param.IRequestParam;
 import com.walden.enumeration.ActionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ public class UtilQuery implements IQuery {
     }
 
     @Override
-    public Object findBy(Object requestParams) {
+    public Object findBy(IRequestParam requestParams) {
         return null;
     }
 }

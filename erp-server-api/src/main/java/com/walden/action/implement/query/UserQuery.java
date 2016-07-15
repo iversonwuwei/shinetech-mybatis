@@ -2,20 +2,19 @@ package com.walden.action.implement.query;
 
 import com.walden.action.IQuery;
 import com.walden.action.IRequest;
-import com.walden.configure.UserRequestParams;
+import com.walden.configure.param.IRequestParam;
 import com.walden.enumeration.ActionEnum;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by walden on 16/7/13.
  */
+@Component
 public class UserQuery implements IQuery {
 
     private IRequest request;
-
-    @Autowired
-    private UserRequestParams userRequestParams;
 
     @Autowired
     public UserQuery(IRequest request){
@@ -29,8 +28,8 @@ public class UserQuery implements IQuery {
     }
 
     @Override
-    public Object findBy(Object requestParams) {
-        JSONArray jsonArray = (JSONArray) request.doGetWithParam(ActionEnum.userQuery, userRequestParams);
+    public Object findBy(IRequestParam requestParams) {
+        JSONArray jsonArray = (JSONArray) request.doGetWithParam(requestParams);
         return jsonArray;
     }
 }

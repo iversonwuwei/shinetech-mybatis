@@ -3,6 +3,7 @@ package com.walden.action.implement.add;
 import com.walden.action.IAdd;
 import com.walden.action.IRequest;
 import com.walden.action.implement.MyBatisServerRequest;
+import com.walden.configure.param.IRequestParam;
 import com.walden.enumeration.ActionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +23,7 @@ public class OrderAdd implements IAdd {
     }
 
     @Override
-    public Object insert(Object o) {
+    public Object insert(IRequestParam o) {
         isAdded = request.doPost(ActionEnum.orderAdd, o);
         return isAdded;
     }

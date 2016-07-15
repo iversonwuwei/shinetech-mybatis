@@ -1,18 +1,16 @@
 package com.walden.action;
 
-import com.walden.configure.OrderRequestParams;
+import com.walden.configure.param.IRequestParam;
 import com.walden.enumeration.ActionEnum;
-
-import java.util.Map;
 
 /**
  * Created by walden on 16/7/8.
  */
 public interface IRequest {
 
-    Object doPost(ActionEnum actionEnum, Object postParam);
+    Object doPost(ActionEnum actionEnum, IRequestParam postParam);
 
-    Object doGetWithParam(ActionEnum actionEnum, Object requestParams);
+    Object doGetWithParam(IRequestParam requestParams);
 
     Object doGet(ActionEnum actionEnum);
 }

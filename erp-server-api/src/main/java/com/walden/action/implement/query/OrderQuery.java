@@ -2,11 +2,9 @@ package com.walden.action.implement.query;
 
 import com.walden.action.IQuery;
 import com.walden.action.IRequest;
-import com.walden.action.implement.MyBatisServerRequest;
-import com.walden.configure.OrderRequestParams;
+import com.walden.configure.param.IRequestParam;
 import com.walden.enumeration.ActionEnum;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,8 +28,8 @@ public class OrderQuery implements IQuery {
     }
 
     @Override
-    public Object findBy(Object requestParams) {
-        JSONArray jsonArray = (JSONArray) request.doGetWithParam(ActionEnum.orderQuery, requestParams);
+    public Object findBy(IRequestParam requestParams) {
+        JSONArray jsonArray = (JSONArray) request.doGetWithParam(requestParams);
         return jsonArray;
     }
 

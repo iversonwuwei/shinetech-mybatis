@@ -21,6 +21,9 @@ public interface OrderDao {
     @Select("SELECT * FROM goTurf.`order` where order_id = #{orderid}")
     OrderEntity selectById(String orderid);
 
+    @Select("SELECT * FROM goTurf.`order` where owner = #{owner}")
+    List<OrderEntity> findByOwner(String owner);
+
     @Update("UPDATE `goTurf`.`order` SET `is_delete`='1' WHERE `order_id`=#{orderid}")
     boolean deleteOrderBy(String orderid);
 

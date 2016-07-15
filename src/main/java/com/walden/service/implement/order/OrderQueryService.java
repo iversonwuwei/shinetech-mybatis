@@ -1,6 +1,7 @@
 package com.walden.service.implement.order;
 
 import com.walden.common.IConvert;
+import com.walden.common.implement.order.OrderQuery;
 import com.walden.dao.auto.OrderDao;
 import com.walden.entity.OrderEntity;
 import com.walden.service.iservice.IQueryService;
@@ -25,9 +26,6 @@ public class OrderQueryService implements IQueryService {
 
     @Autowired
     private OrderDao orderDao;
-    @Qualifier("orderJSONArrayConvert")
-    @Autowired
-    private IConvert jsonArrayConvert;
 
     @Qualifier("JSONObjectConvert")
     @Autowired
@@ -36,7 +34,7 @@ public class OrderQueryService implements IQueryService {
     @Override
     public JSONArray query() {
         try{
-            jsonArray = (JSONArray) jsonArrayConvert.convert(orderDao.getAllOrders());
+            jsonArray = JSONArray.fromObject(orderDao.getAllOrders());
         }catch (Exception e){
             logger.info(e.getMessage(), e.fillInStackTrace());
         }
@@ -44,12 +42,12 @@ public class OrderQueryService implements IQueryService {
     }
 
     @Override
-    public JSONObject queryBy(Object object) {
+    public Object queryBy(Object object) {
         try{
             orderEntity = orderDao.selectById((String) object);
         }catch (Exception e){
             logger.info(e.getMessage(), e.fillInStackTrace());
         }
-        return (JSONObject) jsonObjectConvert.convert(orderEntity);
+        return jsonObjectConvert.convert(orderEntity);
     }
 }

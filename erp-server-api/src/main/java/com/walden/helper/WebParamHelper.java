@@ -2,7 +2,7 @@ package com.walden.helper;
 
 import com.walden.configure.OrderRequestParams;
 import com.walden.configure.UserRequestParams;
-import org.springframework.stereotype.Component;
+import com.walden.configure.param.IRequestParam;
 
 import java.util.Set;
 
@@ -14,9 +14,9 @@ public class WebParamHelper extends RequestHelper {
     private StringBuilder requesturl;
     private OrderRequestParams orderRequestParams;
     private UserRequestParams userRequestParams;
-    private Set<String> keys = null;
+    private Set<Object> keys = null;
 
-    public WebParamHelper(StringBuilder requesturl){
+    public WebParamHelper(StringBuilder requesturl) {
         this.requesturl = requesturl;
     }
 
@@ -28,31 +28,33 @@ public class WebParamHelper extends RequestHelper {
 
     @Override
     public StringBuilder doGetParam(Object params) {
-        if (params instanceof OrderRequestParams){
+        if (params instanceof OrderRequestParams) {
             orderRequestParams = (OrderRequestParams) params;
-            if (orderRequestParams != null && orderRequestParams.getParamsMap() != null
-                    && orderRequestParams.getOrderid()!=null){
-                keys = orderRequestParams.getParamsMap().keySet();
-                getParamsString(keys);
-            }
+            keys = orderRequestParams.getMap().keySet();
+            getParamsString(keys, orderRequestParams);
         }
-        if (params instanceof UserRequestParams){
+        if (params instanceof UserRequestParams) {
             userRequestParams = (UserRequestParams) params;
-            if (userRequestParams != null && userRequestParams.getParamsMap() != null
-                    && userRequestParams.getUserid()!=null){
-                keys = orderRequestParams.getParamsMap().keySet();
-                getParamsString(keys);
+            if (userRequestParams != null && userRequestParams.getMap() != null
+                    && userRequestParams.getUserid() != null) {
+                keys = userRequestParams.getMap().keySet();
+                getParamsString(keys, userRequestParams);
             }
         }
         return requesturl;
     }
 
-    private void getParamsString(Set<String> keys){
-        for (String key : keys){
-            requesturl.append("?");
+    private void getParamsString(Set<Object> keys, IRequestParam requestParam) {
+        requesturl.append("?");
+        int i = 1;
+        for (Object key : keys) {
             requesturl.append(key);
             requesturl.append("=");
-            requesturl.append(orderRequestParams.getParamsMap().get(key));
+            requesturl.append(requestParam.getMap().get(key));
+            if (i < keys.size()) {
+                requesturl.append("&");
+            }
+            i++;
         }
     }
 }

@@ -2,11 +2,13 @@ package com.walden.action.implement;
 
 import com.walden.action.IHost;
 import com.walden.action.IRequest;
+import com.walden.configure.param.IRequestParam;
 import com.walden.content.ActionContent;
 import com.walden.enumeration.ActionEnum;
 import com.walden.helper.RequestHelper;
 import com.walden.helper.WebParamHelper;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +22,7 @@ public class MyBatisServerRequest implements IRequest {
     private String myBatisHost;
     private RestTemplate restTemplate;
     private StringBuilder requesturl;
+    private ActionEnum actionEnum;
 
     public MyBatisServerRequest() {
         host = new MyBatisHost("localhost", 8088);
@@ -28,7 +31,7 @@ public class MyBatisServerRequest implements IRequest {
     }
 
     @Override
-    public Object doPost(ActionEnum actionEnum, Object postParam) {
+    public Object doPost(ActionEnum actionEnum, IRequestParam postParam) {
         requesturl = new StringBuilder();
         requesturl.append(myBatisHost);
         switch (actionEnum){
@@ -57,12 +60,14 @@ public class MyBatisServerRequest implements IRequest {
                 break;
         }
         restTemplate.setMessageConverters(RequestHelper.setHeepMessageConverter());
-        return JSONArray.fromObject(restTemplate.getForObject(requesturl.toString(), Object.class));
+
+        return restTemplate.getForObject(requesturl.toString(), JSONArray.class);
     }
 
     @Override
-    public Object doGetWithParam(ActionEnum actionEnum, Object requestParams) {
+    public Object doGetWithParam(IRequestParam requestParams) {
         requesturl = new StringBuilder();
+        actionEnum = requestParams.getActionEnum();
         requesturl.append(myBatisHost);
         switch (actionEnum) {
             case orderQuery:
@@ -71,6 +76,10 @@ public class MyBatisServerRequest implements IRequest {
                 break;
             case userQuery:
                 requesturl.append(ActionContent.USER);
+                requesturl = new WebParamHelper(requesturl).doGetParam(requestParams);
+                break;
+            case ownerOrderQuery:
+                requesturl.append(ActionContent.ORDERSBYOWNER);
                 requesturl = new WebParamHelper(requesturl).doGetParam(requestParams);
                 break;
         }

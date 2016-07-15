@@ -1,6 +1,7 @@
 package com.walden.service.implement;
 
 import com.walden.action.IQuery;
+import com.walden.configure.param.IRequestParam;
 import com.walden.service.IService;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class QueryService implements IService {
     }
 
     @Override
-    public Object findBy(IQuery query, Object requestParams) {
+    public Object findBy(IQuery query, IRequestParam requestParams) {
         return query.findBy(requestParams);
     }
 }

@@ -1,6 +1,6 @@
 package com.walden.action;
 
-import net.sf.json.JSONObject;
+import com.walden.configure.param.IRequestParam;
 
 /**
  * Created by walden on 16/7/7.
@@ -9,5 +9,5 @@ public interface IQuery {
 
     Object find();
 
-    Object findBy(Object requestParams);
+    Object findBy(IRequestParam requestParams);
 }

@@ -2,6 +2,7 @@ package com.walden.action.implement.add;
 
 import com.walden.action.IAdd;
 import com.walden.action.IRequest;
+import com.walden.configure.param.IRequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -16,7 +17,7 @@ public class UserAdd implements IAdd {
     }
 
     @Override
-    public Object insert(Object o) {
+    public Object insert(IRequestParam o) {
         return null;
     }
 }

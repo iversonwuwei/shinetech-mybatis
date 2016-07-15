@@ -19,4 +19,6 @@ public class ActionContent {
     public static String USERS = "/query/users";
 
     public static String USER = "/query/user";
+
+    public static String ORDERSBYOWNER = "/query/orderbyowner";
 }
